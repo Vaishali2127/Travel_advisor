@@ -12,22 +12,14 @@ import {
 import PlaceDetails from "../PlaceDetails/PlaceDetails";
 import useStyles from "./styles";
 
-const List = () => {
+const List = ({ places }) => {
   const classes = useStyles();
 
   const [type, setType] = useState("");
   const [rating, setRating] = useState("");
 
-  const places = [
-    { name: "best bar" },
-    { name: "best streak" },
-    { name: "best place" },
-    { name: "cool place" },
-    { name: "best beer" },
-    { name: "best stuff" },
-    { name: "best food" },
-    { name: "best management" },
-  ];
+  console.log("Places in list: ", places);
+
   return (
     <div className={classes.container}>
       <Typography variant="h4">Food & Dining around you</Typography>
