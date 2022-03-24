@@ -18,7 +18,7 @@ const List = ({ places }) => {
   const [type, setType] = useState("");
   const [rating, setRating] = useState("");
 
-  console.log("Places in list: ", places);
+  // console.log("Places in list: ", places);
 
   return (
     <div className={classes.container}>

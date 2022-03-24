@@ -23,7 +23,7 @@ const App = () => {
   useEffect(() => {
     if (bounds != null) {
       getPlacesData(bounds.sw, bounds.ne).then((data) => {
-        console.log("places in use effect: ", data);
+        // console.log("places in use effect: ", data);
         setPlaces(data);
       });
     }
@@ -42,6 +42,7 @@ const App = () => {
             setCoordinates={setCoordinates}
             setBounds={setBounds}
             coordinates={coordinates}
+            places={places}
           />
         </Grid>
       </Grid>
