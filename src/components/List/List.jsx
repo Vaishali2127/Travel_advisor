@@ -12,13 +12,18 @@ import {
 import PlaceDetails from "../PlaceDetails/PlaceDetails";
 import useStyles from "./styles";
 
-const List = ({ places, childClicked, isLoading }) => {
+const List = ({
+  places,
+  type,
+  setType,
+  rating,
+  setRating,
+  childClicked,
+  isLoading,
+}) => {
   const classes = useStyles();
 
   const [elRefs, setElRefs] = useState([]);
-
-  const [type, setType] = useState("");
-  const [rating, setRating] = useState("");
 
   useEffect(() => {
     setElRefs((refs) =>
