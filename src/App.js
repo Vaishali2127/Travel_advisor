@@ -13,7 +13,7 @@ const App = () => {
   const [childClicked, setChildClicked] = useState(null);
 
   const [coordinates, setCoordinates] = useState({});
-  const [bounds, setBounds] = useState({});
+  const [bounds, setBounds] = useState(null);
 
   const [isLoading, setIsLoading] = useState(false);
   const [type, setType] = useState("");
@@ -36,7 +36,7 @@ const App = () => {
     if (bounds != null) {
       setIsLoading(true);
 
-      getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
+      getPlacesData(bounds.sw, bounds.ne).then((data) => {
         // console.log("places in use effect: ", data);
         setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
         setIsLoading(false);
