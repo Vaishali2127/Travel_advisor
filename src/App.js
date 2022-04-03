@@ -16,7 +16,7 @@ const App = () => {
   const [bounds, setBounds] = useState(null);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [type, setType] = useState("");
+  const [type, setType] = useState("restaurants");
   const [rating, setRating] = useState("");
 
   useEffect(() => {
@@ -32,25 +32,30 @@ const App = () => {
 
     setFilteredPlaces(filtered);
   }, [rating]);
+
   useEffect(() => {
     if (bounds != null) {
       setIsLoading(true);
 
-      getPlacesData(bounds.sw, bounds.ne).then((data) => {
-        // console.log("places in use effect: ", data);
-        setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
-        setIsLoading(false);
+      getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
+        if (data != null) {
+          setPlaces(
+            data?.filter((place) => place.name && place.num_reviews > 0)
+          );
+        }
         setFilteredPlaces([]);
       });
+
+      setIsLoading(false);
     }
-  }, [type, coordinates, bounds]);
+  }, [type, bounds]);
 
   return (
     <>
       <CssBaseline />
       <Header />
-      <Grid container spacing={3} style={{ width: "100%" }}>
-        <Grid item xs={12} md={4}>
+      <Grid container spacing={3} style={{ width: "100vw" }}>
+        <Grid item style={{ width: "500px" }}>
           <List
             isLoading={isLoading}
             childClicked={childClicked}
@@ -61,7 +66,7 @@ const App = () => {
             setRating={setRating}
           />
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs>
           <Map
             setChildClicked={setChildClicked}
             setCoordinates={setCoordinates}

@@ -20,20 +20,18 @@ const Map = ({
     <div className={classes.mapContainer}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyC-VoHIWtEYeywwFwYxCuRLwVkXxGz8RpM" }}
-        // bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
         defaultCenter={coordinates}
-        center={coordinates} //{lat: 28.46216750937576,lng: 77.5581583959314}
+        center={coordinates}
         defaultZoom={14}
         margin={[50, 50, 50, 50]}
         options={""}
         onChange={(e) => {
-          // console.log(e);
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
         }}
         onChildClick={(child) => setChildClicked(child)}
       >
-        {places.map((place, i) => (
+        {places?.map((place, i) => (
           <div
             className={classes.markerContainer}
             lat={Number(place.latitude)}

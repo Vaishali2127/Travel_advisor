@@ -27,15 +27,11 @@ const List = ({
 
   useEffect(() => {
     setElRefs((refs) =>
-      Array(places.length)
+      Array(places?.length)
         .fill()
         .map((_, i) => refs[i] || createRef())
     );
   }, [places]);
-
-  // console.log({ childClicked });
-  // console.log(childClicked);
-  // console.log("Places in list: ", places);
 
   return (
     <div className={classes.container}>
